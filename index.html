@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ff6347">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="message tool">
+    <meta property="og:title" content="Discord Spam Tool">
     <meta property="og:description" content="インストール不要で使える単体用の投稿ツールです。">
-    <meta property="og:site_name" content="Discord Spam"
+    <meta property="og:site_name" content="Discord Spam Tool">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
@@ -28,13 +28,14 @@
         <header role="banner">
             <div class="banner-container">
               <font color="red">
-                <h1 class="banner-title">Discord Spam Tool(Mobile)</h1>
+                <h1 class="banner-title">Discord Spam Tool</h1>
                </font>
                 <span class="banner-version">Ver. 3.1.2</span>
             </div>
         </header>
         <main role="main">
             <div class="legacy-version-info">
+                <br>
                 <br>
                 <div tabindex="1" id="legacy-version-info-close">close</div>
             </div>
@@ -44,8 +45,18 @@
                     <input id="token-input" class="content-input">
                     <label for="tool-select">Select Tools:</label>
                     <select id="tool-select">
+                        <option value="message">Message</option>
                         <option value="directmessage">Direct Message</option>
                     </select>
+                    <label for="theme-select">Select a theme:</label>
+                    <select id="theme-select">
+                        <option value="default">Default</option>
+                        <option value="jsgaming">JavaScript Gaming</option>
+                        <option value="cssgaming">CSS Gaming</option>
+                        <option value="csswavegaming">CSS Wave Gaming</option>
+                        <option value="inputgaming">Input Field Gaming</option>
+                    </select>
+                    <span id="theme-select-help">?</span>
                     <hr>
                     <div class="content-item" id="checkalive-tool">
                         <button id="checkalive-btn">check</button>
@@ -82,6 +93,7 @@
                         <button id="send-btn">Send</button>
                     </div>
                     <div class="content-item" id="directmessage-tool">
+                        <div class="caution">注意：複数のユーザーIDに対してダイレクトメッセージを展開しようとすると、Tokenが使えなくなります。</div>
                         <label for="userid-input">User ID:</label>
                         <input id="userid-input" class="content-input">
                         <br>
