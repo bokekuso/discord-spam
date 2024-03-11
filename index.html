@@ -3,16 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Discord Troll Tool</title>
-    <meta name="description" content="インストール不要で使える単体用の投稿ツールです。">
+    <title>Discord Spam Tool</title>
+    <meta name="description" content="モバイル版連投ツールです。">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ff6347">
-    <meta property="og:url" content="https://yudachik2.github.io/discord-troll-tool/">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="message Tool">
-    <meta property="og:description" content="インストール不要で使える単体用の投稿ツールです。">
-    <meta property="og:site_name" content="AARR">
-    <meta property="og:image" content="https://raw.githubusercontent.com/hatchingchick/aarr-jp.github.io/main/public/images/logo-216x216.png">
+    <meta property="og:title" content="Spam Tool">
+    <meta property="og:description" content="モバイル連投ツールです。">
+    <meta property="og:site_name" content="Discord Spam Tool">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
@@ -30,9 +28,8 @@
         <header role="banner">
             <div class="banner-container">
               <font color="red">
-                <h1 class="banner-title">AARR message Tool</h1>
+                <h1 class="banner-title">Discord Spam Tool</h1>
                </font>
-                <span class="banner-version">Ver. 3.1.2</span>
             </div>
         </header>
         <main role="main">
@@ -40,16 +37,6 @@
                 <br>
 ※スマホ向けの簡易的ツールです。joinが付いてないので使う前に自分でアカウントを入室させる必要があります
 <br>
-メモ：ツールからメンションする場合
-　　<@ユーザーID>
-<br>
-例：<@1069891250683125760>
-<br>
-ロールメンションの場合は<@&ロールID>
-<br>
-                <a href= "https://discord.gg/FY3yxKd8rt" >サポートサーバー</a> 
-<br>
-<a href= "https://www.youtube.com/playlist?list=PLcl4F85nhmWA0HDi0r2AG6HCyEOw-D-_K" >tokenの使い方動画</a>
                 <br>
                 <div tabindex="1" id="legacy-version-info-close">close</div>
             </div>
@@ -71,7 +58,7 @@
                         <option value="csswavegaming">CSS Wave Gaming</option>
                         <option value="inputgaming">Input Field Gaming</option>
                     </select>
-                    <span id="theme-select-help">?</span>
+                    <span id="theme-select-help"></span>
                     <hr>
                     <div class="content-item" id="checkalive-tool">
                         <button id="checkalive-btn">check</button>
@@ -108,8 +95,8 @@
                         <button id="send-btn">Send</button>
                     </div>
                     <div class="content-item" id="directmessage-tool">
-                        <div class="caution">注意: 複数のユーザーidに対してダイレクトメッセージを展開しようとすると、Tokenが使えなくなります。</div>
-                        <label for="userid-input">User Id:</label>
+                        <div class="caution">注意: 複数のユーザーIDに対してダイレクトメッセージを展開しようとすると、Tokenが使えなくなります。</div>
+                        <label for="userid-input">User ID:</label>
                         <input id="userid-input" class="content-input">
                         <br>
                         <label for="dmcontent-input">Content:</label>
@@ -124,12 +111,6 @@
         <footer role="contentinfo">
             <div class="footer-container">
                 <p>
-                    <span>このページのコンテンツは</span>
-                    <a href="https://github.com/YudachiK2/discord-troll-tool/blob/main/LICENSE" target="_blank"
-                        rel="noopener noreferrer" class="footer-link">MIT License</a>
-                    <span>に基づきます。&copy; Copyright 2021 </span>
-                    <a href="https://github.com/YudachiK2" target="_blank" rel="noopener noreferrer"
-                        class="footer-link">YudachiK2</a>
                 </p>
             </div>
         </footer>
