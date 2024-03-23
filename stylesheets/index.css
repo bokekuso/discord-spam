@@ -48,6 +48,15 @@ body {
     color: #ff0000;
 }
 
+.legacy-version-info {
+    padding: 0.5em;
+    position: relative;
+    font-size: 12px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    color: #000000;
+    background-color: #ffffa1;
+}
+
 .content-wrap {
     padding: 1em 15vw;
     text-align: center;
