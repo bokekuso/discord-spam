@@ -57,14 +57,6 @@ body {
     background-color: #ffffa1;
 }
 
-#legacy-version-info-close {
-    right: 5px;
-    bottom: 0px;
-    position: absolute;
-    cursor: pointer;
-    color:#4242fc;
-}
-
 #legacy-version-info-close:hover {
     text-decoration: underline;
 }
