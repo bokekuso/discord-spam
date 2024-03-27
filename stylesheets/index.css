@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-    background-color: #494949;
+    background-color: #000001;
 }
 
 .wrap {
@@ -22,7 +22,7 @@ body {
 
 .banner-title {
     margin: 0px;
-    color: #fffafa;
+    color: #ffffff;
 }
 
 .footer-container {
