@@ -8,12 +8,6 @@ body {
     background-color: #000000;
 }
 
-.wrap {
-    min-height: 100vh;
-    position: relative;
-    box-sizing: border-box;
-}
-
 .banner-container {
     padding: 1em;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
@@ -71,6 +65,14 @@ body {
 
 #dm-input {
     width: 100%;
+}
+
+#token, #channelid, #content, #delay {
+    font-size: 25px;
+    background-color: #000000;
+    width: 75%;
+    padding: 20px;
+    border: 2px solid #838383c9;
 }
 
 @media screen and (min-width: 1500px) {
