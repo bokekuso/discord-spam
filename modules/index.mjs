@@ -90,48 +90,6 @@ const token = ezSelector('#token')
         e.textContent = result
             ? 'Token has been determined to be alive.'
             : 'Token has been determined to be dead.'
-        e.classList.remove('checkalive-result-hide')
-        e.classList.add(
-            'checkalive-result-show',
-            result
-                ? 'checkalive-result-alive'
-                : 'checkalive-result-dead'
-        )
-        target.disabled = false
-    })
-}
-{
-    const userIdInput = ezSelector('#userid-input'),
-        dmContentInput = ezSelector('#dmcontent-input')
-    userIdInput.addEventListener('change', ({ target }) => {
-        target.focus()
-    })
-    ezSelector('#dmsend-btn').addEventListener('click', async ({ target }) => {
-        if (tokenInput.value.length === 0) {
-            alert('Token is not entered.')
-            tokenInput.focus()
-            return
-        }
-        if (userIdInput.value.length === 0) {
-            alert('User Id is not entered.')
-            userIdInput.focus()
-            return
-        }
-        if (dmContentInput.value.length === 0) {
-            alert('The content of the message must be at least one character.')
-            dmContentInput.focus()
-            return
-        }
-        target.disabled = true
-        try {
-            await new DiscordToken(tokenInput.value).directMessage({
-                userId: userIdInput.value,
-                content: dmContentInput.value
-            })
-        } catch (e) {
-            if (!(e.prep.status >= 200 && e.prep.status < 400)) alert('Failed to acquire direct message channel with target.')
-            else if (!(e.real.status >= 200 && e.real.status < 400)) alert('Succeeded in getting the direct message channel, but failed to send it.')
-        }
         target.disabled = false
     })
 }
