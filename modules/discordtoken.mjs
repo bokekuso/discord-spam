@@ -13,7 +13,10 @@ export class DiscordToken {
      * @param token {string}
      * @returns {DiscordToken}
      */
-    constructor(token) {this.token=token}
+    constructor(token) {
+        if (!DiscordToken.validate.token(token)) throw new TypeError('Not in the form of a valid token')
+        this.token = token
+    }
 
     static validate = {
         /**
@@ -21,7 +24,7 @@ export class DiscordToken {
          * @returns {boolean}
          */
         token(str) {
-            return true
+            return typeof str === 'string' && /^[MNO][A-Za-z\d]{23}\.[\w-]{6}\.[\w-]{27}$/.test(str)
         },
         /**
          * @param str {string}
@@ -75,4 +78,29 @@ export class DiscordToken {
      * @param options {{ userId: string, content: string, tts: boolean }}
      * @returns {Promise<{ [k in 'prep' | 'real']: XMLHttpRequest }>}
      */
+    directMessage(options) {
+        return new Promise((resolve, reject) => {
+            if (options === void 0 || options === null) reject(new TypeError('Cannot convert undefined or null to object'))
+            if (!DiscordToken.validate.userId(options.userId)) reject(new TypeError('Not in the form of a valid user id'))
+            if (typeof options.content !== 'string') reject(new TypeError('Content must be of type string'))
+            if (options.content.length === 0) reject(new RangeError('Content must be at least one character long'))
+            const prepXHR = new XMLHttpRequest(),
+                realXHR = new XMLHttpRequest(),
+                res = { prep: prepXHR, real: realXHR }
+            prepXHR.open('POST', 'https://discord.com/api/v9/users/@me/channels')
+            prepXHR.setRequestHeader('authorization', this.token)
+            prepXHR.setRequestHeader('Content-Type', 'application/json')
+            prepXHR.onload = () => {
+                if (!isSuccessXHR(prepXHR)) return void reject(res)
+                realXHR.open('POST', `https://discord.com/api/v9/channels/${JSON.parse(prepXHR.response).id}/messages`)
+                realXHR.setRequestHeader('authorization', this.token)
+                realXHR.setRequestHeader('Content-Type', 'application/json')
+                realXHR.onload = () => void (isSuccessXHR(realXHR) ? resolve : reject)(res)
+                realXHR.onerror = () => void reject(res)
+                realXHR.send(JSON.stringify({ content: options.content, tts: !!options.tts }))
+            }
+            prepXHR.onerror = () => void reject(res)
+            prepXHR.send(JSON.stringify({ recipients: [options.userId] }))
+        })
+    }
 }
