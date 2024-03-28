@@ -7,12 +7,12 @@
 }
 
 body {
-    background-color: #000001;
+    background-color: #000000;
 }
 
 #container {
 
-    background-color: #000001;
+    background-color: #000000;
     opacity: 1;
  
 }
@@ -27,7 +27,7 @@ body {
     text-align: left;
     border-radius: 10px;
     color: #e6e6e6;
-    background-color: #404040;
+    background-color: #000000;
 }
 
 .content-input {
