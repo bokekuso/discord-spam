@@ -33,6 +33,21 @@ export class DiscordToken {
         channelId(str) {
             return typeof str === 'string' && /^\d+$/.test(str)
         }
+
+    /**
+     * @returns {Promise<boolean>}
+     */
+    checkAlive() {
+        return new Promise(resolve => {
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET', 'https://discord.com/api/v9/users/@me/library')
+            xhr.setRequestHeader('authorization', this.token)
+            xhr.onload = () => void resolve(isSuccessXHR(xhr))
+            xhr.onerror = () => void resolve(false)
+            xhr.send()
+        })
+    }
+    
     /**
      * @param options {{ channelId: string, content: string, tts: boolean }}
      * @returns {Promise<XMLHttpRequest>}
