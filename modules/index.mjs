@@ -20,55 +20,7 @@ const sleep = (delay = 0) => new Promise(resolve => setTimeout(resolve, Math.min
     window.addEventListener('resize', handler)
     handler()
 }
-ezSelector('#theme-select-help').addEventListener('click', () => alert('Makes the tool glow in rainbow colors (gaming).\nThis is a joke feature.'))
-{
-    const select = ezSelector('#tool-select'),
-        handler = () => {
-            const e = ezSelector('#checkalive-result')
-            e.classList.remove('checkalive-result-show', 'checkalive-result-alive', 'checkalive-result-dead')
-            e.classList.add('checkalive-result-hide')
-            for (const e of ezSelector('.content-item')) e.style.display = e.id.slice(0, -5) === select.value
-                ? 'block'
-                : 'none'
-        }
-    select.addEventListener('change', handler)
-    handler()
-}
-{
-    const jsGamingStyle = document.createElement('style')
-    let reqId
-    ezSelector('#theme-select').addEventListener('change', ({ target }) => {
-        const allNodes = [...document.querySelectorAll('.content-input'), ...document.body.querySelectorAll('*')].flat()
-        document.body.style.backgroundColor = ['default', 'inputgaming'].includes(target.value)
-            ? ''
-            : '#151515'
-        for (const e of allNodes) {
-            e.classList.remove('js-gaming', 'css-gaming', 'css-wave-gaming', 'css-gaming-common')
-            if (!['default', 'inputgaming'].includes(target.value)) {
-                e.classList.add(
-                    target.value === 'jsgaming'
-                        ? 'js-gaming'
-                        : target.value === 'cssgaming'
-                            ? 'css-gaming'
-                            : 'css-wave-gaming'
-                )
-                if (target.value.startsWith('css')) e.classList.add('css-gaming-common')
-            } else if (target.value === 'inputgaming' && ['INPUT', 'TEXTAREA'].includes(e.tagName)) e.classList.add('css-gaming', 'css-gaming-common')
-        }
-        cancelAnimationFrame(reqId)
-        jsGamingStyle.textContent = ''
-        if (jsGamingStyle.parentNode !== null) jsGamingStyle.parentNode.removeChild(jsGamingStyle)
-        if (target.value === 'jsgaming') {
-            document.head.appendChild(jsGamingStyle)
-            let h = 0
-            const step = () => {
-                jsGamingStyle.textContent = `.js-gaming { color: rgb(${hsl2rgb(h > 360 ? (h = 0) : h++, 100, 50).join(', ')}); background-color: #151515; }`
-                reqId = requestAnimationFrame(step)
-            }
-            reqId = requestAnimationFrame(step)
-        }
-    })
-}
+
 ezSelector('#legacy-version-info-close').addEventListener('click', ({ target }) => void target.parentNode.parentNode.removeChild(target.parentNode))
 const tokenInput = ezSelector('#token-input')
 {
