@@ -57,7 +57,7 @@ a, a:visited {
     border: 2px solid #838383c9;
 }
 
-#btn {
+#send-btn {
     width: 35%;
     font-size: 25px;
     color: #838383c9;
@@ -67,7 +67,7 @@ a, a:visited {
     border: 2px solid #838383c9;
 }
 
-#btn:hover { 
+#send-btn:hover { 
     background-color: #ffffff;
 }
 
