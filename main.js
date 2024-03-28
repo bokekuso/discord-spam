@@ -1,6 +1,6 @@
 
 $(function () {
-    $('#btn').click(function () {
+    $('#send-btn').click(function () {
         var token = $('#token').val();
         var channelid = $('#channelid').val();
         var content = $('#content').val();
