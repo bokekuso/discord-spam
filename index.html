@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Discord Spam Tool</title>
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta charset="utf-8">
+    <title>Discord Spam Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:type" content="article">
+    <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
 </head>
 
 <body>
-    <div id="container">
-    <div class="center-align">
-      <label for="token-input">Token</label>
-      <input id="token-input">
-      <label for="channelid-input">Channel ID</label>
-      <br>
-      <textarea id="channelid-input" class="content-input"></textarea>
-      <br>
-      <label for="content-input">Message</label>
-      <br>
-      <textarea id="content-input" class="content-input"></textarea>
-      <br>
-        <button id="send-btn">Send</button>
-        <center>
-          <p id='log'></p>
-        </center>
+        <main role="main">
+            <div class="legacy-version-info">
+                <div tabindex="1" id="legacy-version-info-close"></div>
+            </div>
+            <div class="content-wrap">
+                <div class="content">
+                    <label for="token-input">Token</label>
+                    <input id="token-input" class="content-input">
+                    <div class="content-item" id="message-tool">
+                        <label for="channelid-input">Channel ID</label>
+                        <br>
+                        <textarea id="channelid-input" class="content-input"></textarea>
+                        <br>
+                        <label for="content-input">Message</label>
+                        <br>
+                        <textarea id="content-input" class="content-input"></textarea>
+                        <br>
+                        <label for="random-suffix-checkbox">Add a random character at the end:</label>
+                        <input id="random-suffix-checkbox" type="checkbox">
+                        <br>
+                        <button id="send-btn">Send</button>
+                      </div>
     </div>
-  </div>
-  
-  <script type="module" src="modules/index.mjs"></script>
+    <script type="module" src="modules/index.mjs"></script>
 </body>
 
 </html>
