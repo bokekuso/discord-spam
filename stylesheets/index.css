@@ -1,77 +1,71 @@
-html, body {
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
+
+* {
+    text-align: center;
+    color: #838383c9;
+    font-family: "Arial Black", Gadget, sans-serif"
+    
 }
 
 body {
-    background-color: #000000;
+    background-color: #000001;
 }
 
-.content-wrap {
-    padding: 1em 15vw;
+#container {
+
+    background-color: #000001;
+    opacity: 1;
+ 
+}
+
+
+#header {
+    text-align: center;
+    margin-top: 47px;
+    margin: auto;
+    font-size: 39px;
+    color: rgb(255, 255, 255)
+
+}
+
+
+.center-align {
     text-align: center;
 }
 
-.content {
-    padding: 25em;
-    text-align: left;
-    border-radius: 2px;
-    color: #e6e6e6;
-    background-color: #000000;
+p {
+    font-family: "Arial Black, Gadget, sans-serif";
+    font-size: 27px;
 }
 
-.content-input {
-    max-width: 100%;
-}
-
-.caution {
-    margin-bottom: 0.5em;
-    padding-left: 2.5px;
-    font-size: 12px;
-    border-radius: 2.5px;
-    background-color: #9370db;
-}
-
-#dm-input {
-    width: 100%;
+a, a:visited {
+    color: rgb(255, 255, 255)
 }
 
 #token, #channelid, #content, #delay {
     font-size: 25px;
-    background-color: #ffffff;
+    background-color: #000000;
     width: 75%;
     padding: 20px;
     border: 2px solid #838383c9;
 }
 
-@media screen and (min-width: 1500px) {
-    #discord-widget {
-        width: 15vw;
-        bottom: 0px;
-        left: 0px;
-        position: absolute;
-    }
+#btn {
+    width: 35%;
+    font-size: 25px;
+    color: #838383c9;
+    margin-top: 25px;
+    padding: 17px;
+    background-color: #000000;
+    border: 2px solid #838383c9;
 }
 
-@media screen and (max-width: 1500px) {
-    #discord-widget {
-        width: calc(100% - 2em);
-        margin: 1em 0px 1em 1em;
-    }
+#btn:hover { 
+    background-color: #ffffff;
 }
 
-.checkalive-result-hide {
-    display: none;
-}
-.checkalive-result-show {
-    margin-top: 0.5em;
-    display: block;
-    border-radius: 5px;
-}
-.checkalive-result-alive {
-    background-color: limegreen;
-}
-.checkalive-result-dead {
-    background-color: rgb(255, 31, 69);
+#log {
+    text-align: center;
+    width: 5%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
