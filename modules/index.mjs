@@ -70,58 +70,105 @@ ezSelector('#theme-select-help').addEventListener('click', () => alert('Makes th
     })
 }
 ezSelector('#legacy-version-info-close').addEventListener('click', ({ target }) => void target.parentNode.parentNode.removeChild(target.parentNode))
-const token = ezSelector('#token')
+const tokenInput = ezSelector('#token-input')
 {
-    token.addEventListener('change', ({ target }) => {
-        
+    tokenInput.addEventListener('change', ({ target }) => {
+        if (DiscordToken.validate.token(target.value)) return
+        target.value = ''
+        alert('Invalid Token Format.')
         target.focus()
     })
     ezSelector('#checkalive-btn').addEventListener('click', async ({ target }) => {
-        if (token.value.length === 0) {
+        if (tokenInput.value.length === 0) {
             alert('Token is not entered.')
-            token.focus()
+            tokenInput.focus()
             return
         }
         const e = ezSelector('#checkalive-result')
         e.classList.remove('checkalive-result-show', 'checkalive-result-alive', 'checkalive-result-dead')
         e.classList.add('checkalive-result-hide')
         target.disabled = true
-        const result = await new DiscordToken(token.value).checkAlive()
+        const result = await new DiscordToken(tokenInput.value).checkAlive()
         e.textContent = result
             ? 'Token has been determined to be alive.'
             : 'Token has been determined to be dead.'
+        e.classList.remove('checkalive-result-hide')
+        e.classList.add(
+            'checkalive-result-show',
+            result
+                ? 'checkalive-result-alive'
+                : 'checkalive-result-dead'
+        )
         target.disabled = false
     })
 }
 {
-    const channelid = ezSelector('#channelid'),
-        contentInput = ezSelector('#content')
-    channelid.addEventListener('change', ({ target }) => {
+    const userIdInput = ezSelector('#userid-input'),
+        dmContentInput = ezSelector('#dmcontent-input')
+    userIdInput.addEventListener('change', ({ target }) => {
+        if (DiscordToken.validate.userId(target.value)) return
+        target.value = ''
+        alert('Invalid User Id Format.')
+        target.focus()
+    })
+    ezSelector('#dmsend-btn').addEventListener('click', async ({ target }) => {
+        if (tokenInput.value.length === 0) {
+            alert('Token is not entered.')
+            tokenInput.focus()
+            return
+        }
+        if (userIdInput.value.length === 0) {
+            alert('User Id is not entered.')
+            userIdInput.focus()
+            return
+        }
+        if (dmContentInput.value.length === 0) {
+            alert('The content of the message must be at least one character.')
+            dmContentInput.focus()
+            return
+        }
+        target.disabled = true
+        try {
+            await new DiscordToken(tokenInput.value).directMessage({
+                userId: userIdInput.value,
+                content: dmContentInput.value
+            })
+        } catch (e) {
+            if (!(e.prep.status >= 200 && e.prep.status < 400)) alert('Failed to acquire direct message channel with target.')
+            else if (!(e.real.status >= 200 && e.real.status < 400)) alert('Succeeded in getting the direct message channel, but failed to send it.')
+        }
+        target.disabled = false
+    })
+}
+{
+    const channelIdInput = ezSelector('#channelid-input'),
+        contentInput = ezSelector('#content-input')
+    channelIdInput.addEventListener('change', ({ target }) => {
         const arr = []
-        for (const v of channelid.value.split('\n')) {
-            if (DiscordToken.validate.channelid(v)) arr.push(v)
+        for (const v of channelIdInput.value.split('\n')) {
+            if (DiscordToken.validate.channelId(v)) arr.push(v)
         }
         target.value = arr.join('\n')
         target.focus()
     })
     ezSelector('#send-btn').addEventListener('click', async ({ target }) => {
-        if (token.value.length === 0) {
+        if (tokenInput.value.length === 0) {
             alert('Token is not entered.')
-            token.focus()
+            tokenInput.focus()
             return
         }
-        if (channelid.value.length === 0) {
+        if (channelIdInput.value.length === 0) {
             alert('Channel Id is not entered.')
-            channelid.focus()
+            channelIdInput.focus()
             return
         }
         target.disabled = true
         for (let i = 0; i < +ezSelector('#count-select').value; i++) {
-            for (const [o, v] of channelid.value.split('\n').entries()) {
+            for (const [o, v] of channelIdInput.value.split('\n').entries()) {
                 try {
-                    await new DiscordToken(token.value).message({
-                        channelid: v,
-                        content: (content.value.length === 0 ? i.toString() : content.value)
+                    await new DiscordToken(tokenInput.value).message({
+                        channelId: v,
+                        content: (contentInput.value.length === 0 ? i.toString() : contentInput.value)
                             + (
                                 !!ezSelector('#random-suffix-checkbox').checked
                                     ? String.fromCodePoint(Math.floor(Math.random() * Math.pow(2, 16)))
