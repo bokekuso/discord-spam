@@ -13,23 +13,16 @@
 <body>
     <div id="container">
     <div class="center-align">
-      <p style="font-family: Arial, Helvetica, sans-serif; color: #ffffff"></p><input type='text' id="token"
-        placeholder="Token">
-      <p>&#160;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <p>
-      <p style="font-family: Arial, Helvetica, sans-serif; color: #ffffff"></p><input type="text" id="channelid"
-        placeholder="Channel ID">
-      <p>&#160;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <p>
-      <p style="font-family: Arial, Helvetica, sans-serif; color: #ffffff"></p><input type="text" id="content"
-        placeholder="Message">
-      <p>&#160;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <p>
-      <p style="font-family: Arial, Helvetica, sans-serif; color: #ffffff"></p><input type="text" id="delay"
-        placeholder="Delay (ms)">
+      <label for="token-input">Token</label>
+      <input id="token-input" class="content-input">
+      <label for="channelid-input">Channel ID</label>
       <br>
-      <p>&#160;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <p>
+      <textarea id="channelid-input" class="content-input"></textarea>
+      <br>
+      <label for="content-input">Message</label>
+      <br>
+      <textarea id="content-input" class="content-input"></textarea>
+      <br>
         <button id="send-btn">Send</button>
         <center>
           <p id='log'></p>
