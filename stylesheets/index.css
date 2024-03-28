@@ -8,36 +8,6 @@ body {
     background-color: #000000;
 }
 
-.banner-container {
-    padding: 1em;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-    background-color: #1e1e1e;
-}
-
-.banner-title {
-    margin: 0px;
-    color: #ffffff;
-}
-
-.footer-container {
-    width: 100%;
-    bottom: 0px;
-    position: absolute;
-    text-align: center;
-    color: #c0c0c0;
-    background-color: #1e1e1e;
-}
-
-.footer-link {
-    text-decoration: none;
-    color: #ffffff;
-}
-
-.footer-link:hover {
-    transition: color 0.25s;
-    color: #ff0000;
-}
-
 .content-wrap {
     padding: 1em 15vw;
     text-align: center;
@@ -69,7 +39,7 @@ body {
 
 #token, #channelid, #content, #delay {
     font-size: 25px;
-    background-color: #000000;
+    background-color: #ffffff;
     width: 75%;
     padding: 20px;
     border: 2px solid #838383c9;
