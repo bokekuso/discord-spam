@@ -67,44 +67,6 @@ const tokenInput = ezSelector('#token-input')
     })
 }
 {
-    const userIdInput = ezSelector('#userid-input'),
-        dmContentInput = ezSelector('#dmcontent-input')
-    userIdInput.addEventListener('change', ({ target }) => {
-        if (DiscordToken.validate.userId(target.value)) return
-        target.value = ''
-        alert('Invalid User Id Format.')
-        target.focus()
-    })
-    ezSelector('#dmsend-btn').addEventListener('click', async ({ target }) => {
-        if (tokenInput.value.length === 0) {
-            alert('Token is not entered.')
-            tokenInput.focus()
-            return
-        }
-        if (userIdInput.value.length === 0) {
-            alert('User Id is not entered.')
-            userIdInput.focus()
-            return
-        }
-        if (dmContentInput.value.length === 0) {
-            alert('The content of the message must be at least one character.')
-            dmContentInput.focus()
-            return
-        }
-        target.disabled = true
-        try {
-            await new DiscordToken(tokenInput.value).directMessage({
-                userId: userIdInput.value,
-                content: dmContentInput.value
-            })
-        } catch (e) {
-            if (!(e.prep.status >= 200 && e.prep.status < 400)) alert('Failed to acquire direct message channel with target.')
-            else if (!(e.real.status >= 200 && e.real.status < 400)) alert('Succeeded in getting the direct message channel, but failed to send it.')
-        }
-        target.disabled = false
-    })
-}
-{
     const channelIdInput = ezSelector('#channelid-input'),
         contentInput = ezSelector('#content-input')
     channelIdInput.addEventListener('change', ({ target }) => {
@@ -122,7 +84,7 @@ const tokenInput = ezSelector('#token-input')
             return
         }
         if (channelIdInput.value.length === 0) {
-            alert('Channel Id is not entered.')
+            alert('Channel ID is not entered.')
             channelIdInput.focus()
             return
         }
