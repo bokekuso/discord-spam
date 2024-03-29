@@ -79,7 +79,7 @@ a, a:visited {
     border-radius: 5px;
 }
 .checkalive-result-alive {
-    background-color: limegreen;
+    background-color: #000000;
 }
 .checkalive-result-dead {
     background-color: rgb(255, 31, 69);
